@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#25291f">
+<title>Hamid & Saniya | Wedding Invitation</title>
+<meta name="description" content="You are warmly invited to celebrate the Walima of Hamid and Saniya.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --dark: #25291f;
+  --olive: #656b4b;
+  --gold: #c6aa75;
+  --cream: #f4efdf;
+  --paper: #e9e0c9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--dark);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+.cover {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 45%, #596047 0%, #34392b 43%, #20241d 100%);
+}
+.cover:before, .cover:after {
+  content: "";
+  position: absolute;
+  width: min(78vw, 520px);
+  height: min(100vw, 650px);
+  border: 1px solid rgba(198,170,117,.55);
+  border-radius: 48% 48% 0 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-48%);
+  pointer-events: none;
+}
+.cover:after {
+  width: min(70vw, 470px);
+  height: min(91vw, 600px);
+  border-color: rgba(198,170,117,.25);
+  transform: translate(-50%,-45%);
+}
+.arch {
+  position: absolute;
+  width: min(65vw, 425px);
+  height: min(84vw, 550px);
+  border: 1px solid var(--gold);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-47%);
+  opacity: .55;
+}
+.cover-content {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 45px 16px;
+  animation: rise 1.2s ease both;
+}
+.ornament {
+  color: var(--gold);
+  font-size: 34px;
+  margin-bottom: 16px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 10px;
+  line-height: 2;
+  color: #e1d0a6;
+}
+.cover h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(55px, 13vw, 90px);
+  line-height: .9;
+  margin: 24px 0;
+}
+.ampersand {
+  display: block;
+  color: var(--gold);
+  font-size: .66em;
+  font-style: italic;
+  margin: 10px 0;
+}
+.rule {
+  height: 1px;
+  width: 100px;
+  background: var(--gold);
+  margin: 26px auto;
+}
+.cover .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+.date-label {
+  color: #e1d0a6;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+.scroll-link {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 13px 23px;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  transition: .25s;
+}
+.scroll-link:hover { background: var(--gold); color: var(--dark); }
+
+.section {
+  padding: 82px 22px;
+  text-align: center;
+}
+.section.light {
+  background: var(--cream);
+  color: var(--dark);
+}
+.section.olive { background: var(--olive); }
+.section-inner { max-width: 660px; margin: auto; }
+.kicker {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.light .kicker { color: var(--olive); }
+.section h2 {
+  font: 500 clamp(39px, 8vw, 58px)/1.05 'Cormorant Garamond', serif;
+  margin: 19px 0;
+}
+.section p {
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 490px;
+  margin: 15px auto;
+}
+.divider {
+  color: var(--gold);
+  font-size: 24px;
+  margin: 27px 0;
+}
+.detail-card {
+  max-width: 440px;
+  margin: 30px auto 0;
+  border: 1px solid rgba(198,170,117,.7);
+  padding: 34px 20px;
+}
+.detail-card h3 {
+  font: 500 30px 'Cormorant Garamond', serif;
+  margin: 12px 0;
+}
+.detail-card p { margin: 9px auto; }
+.detail-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.light .detail-label { color: var(--olive); }
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 35px auto 0;
+}
+.time-box {
+  width: 78px;
+  padding: 16px 4px;
+  border: 1px solid rgba(198,170,117,.6);
+}
+.time-box strong {
+  display: block;
+  font: 500 34px 'Cormorant Garamond', serif;
+}
+.time-box span {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.action {
+  display: inline-block;
+  margin: 18px 6px 0;
+  padding: 14px 20px;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+}
+.action.outline { background: transparent; color: inherit; }
+footer {
+  text-align: center;
+  padding: 35px 18px;
+  color: #d6c6a3;
+  font: italic 22px 'Cormorant Garamond', serif;
+}
+.fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .8s, transform .8s;
+}
+.fade.visible { opacity: 1; transform: translateY(0); }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 380px) {
+  .countdown { gap: 6px; }
+  .time-box { width: 68px; }
+  .time-box strong { font-size: 29px; }
+  .eyebrow { letter-spacing: 2.5px; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <section class="cover" id="home">
+    <div class="arch"></div>
+    <div class="cover-content">
+      <div class="ornament">✳</div>
+      <div class="eyebrow">With the blessings of our families</div>
+      <h1>
+        Hamid
+        <span class="ampersand">&amp;</span>
+        Saniya
+      </h1>
+      <div class="rule"></div>
+      <div class="subtitle">Walima Invitation</div>
+      <p style="font-size:13px;line-height:1.9;margin-top:22px">
+        Together with our families,<br>
+        we invite you to share in our happiness.
+      </p>
+      <div class="date-label">A celebration of love &amp; togetherness</div>
+      <a class="scroll-link" href="#invitation">Open Invitation ↓</a>
+    </div>
+  </section>
+
+  <section class="section light" id="invitation">
+    <div class="section-inner fade">
+      <div class="kicker">A special invitation</div>
+      <h2>With joy in our hearts</h2>
+      <div class="divider">❧</div>
+      <p>
+        Our families would be honoured by your presence
+        as we celebrate the Walima of Hamid Khan and Saniya Khan.
+      </p>
+      <p>
+        Your presence, prayers and blessings will make
+        this celebration even more meaningful.
+      </p>
+      <div class="divider">✧</div>
+      <div class="eyebrow" style="color:var(--olive)">With love and warm wishes</div>
+      <h2 style="font-size:36px">Hamid &amp; Saniya</h2>
+    </div>
+  </section>
+
+  <section class="section" id="celebration">
+    <div class="section-inner fade">
+      <div class="kicker">Save the occasion</div>
+      <h2>The Walima</h2>
+      <div class="rule"></div>
+      <p>
+        We look forward to celebrating this beautiful occasion
+        with our loved ones.
+      </p>
+
+      <div class="detail-card">
+        <div class="detail-label">Date &amp; time</div>
+        <h3 id="event-date">Your special day</h3>
+        <p id="event-time">Event time to be confirmed</p>
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div class="time-box"><strong>--</strong><span>Days</span></div>
+          <div class="time-box"><strong>--</strong><span>Hours</span></div>
+          <div class="time-box"><strong>--</strong><span>Minutes</span></div>
+          <div class="time-box"><strong>--</strong><span>Seconds</span></div>
+        </div>
+        <p style="font-size:11px;margin-top:20px">
+          The exact date and time will be added once confirmed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section olive" id="venue">
+    <div class="section-inner fade">
+      <div class="kicker">We saved you a place</div>
+      <h2>Meet us there</h2>
+      <div class="divider">✧</div>
+      <div class="detail-card">
+        <div class="detail-label">Wedding venue</div>
+        <h3>Sona Lawns</h3>
+        <p>Please refer to your invitation for the complete venue address.</p>
+        <a class="action outline"
+           href="https://www.google.com/maps/search/?api=1&query=Sona+Lawns"
+           target="_blank" rel="noopener noreferrer">Find venue on map ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" id="closing">
+    <div class="section-inner fade">
+      <div class="ornament">❧</div>
+      <div class="kicker">Your presence is our present</div>
+      <h2>We can't wait to see you</h2>
+      <p>
+        Thank you for being a part of our lives.
+        We look forward to sharing this memorable day with you.
+      </p>
+      <div class="rule"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:26px">
+        With love, Hamid &amp; Saniya
+      </p>
+      <a class="action" href="#home">Back to invitation ↑</a>
+    </div>
+  </section>
+</main>
+
+<footer>Made with love · Hamid &amp; Saniya</footer>
+
+<script>
+// Reveal sections smoothly as the visitor scrolls.
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// Add the confirmed event date and time here later.
+// Format: new Date('2026-12-25T19:00:00+05:30')
+// The countdown remains hidden until a real date is entered.
+const eventDate = null;
+
+if (eventDate instanceof Date && !isNaN(eventDate.getTime())) {
+  document.getElementById('event-date').textContent =
+    eventDate.toLocaleDateString('en-IN', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+
+  function updateCountdown() {
+    const remaining = eventDate.getTime() - Date.now();
+    const countdown = document.getElementById('countdown');
+
+    if (remaining <= 0) {
+      countdown.innerHTML = '<p>The celebration day is here!</p>';
+      return;
+    }
+
+    const values = [
+      Math.floor(remaining / 86400000),
+      Math.floor(remaining / 3600000) % 24,
+      Math.floor(remaining / 60000) % 60,
+      Math.floor(remaining / 1000) % 60
+    ];
+
+    countdown.querySelectorAll('strong').forEach((el, i) => {
+      el.textContent = String(values[i]).padStart(2, '0');
+    });
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+} else {
+  document.getElementById('countdown').style.display = 'none';
+}
+</script>
+</body>
+</html>
