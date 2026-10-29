@@ -1,9 +1,16 @@
+/* =========================================
+   HAMID & SANIYA — WEDDING INVITATION
+   Cream, ivory and gold theme
+   Mobile-first responsive design
+========================================= */
+
 :root {
-  --ivory: #f8f0df;
-  --cream: #f1e2c3;
-  --gold: #b08a43;
-  --dark-gold: #795923;
-  --ink: #5c472c;
+  --cream: #fffaf0;
+  --ivory: #fffdf7;
+  --gold: #bd9853;
+  --dark-gold: #89652f;
+  --brown: #563e2b;
+  --dark-background: #20110d;
 }
 
 * {
@@ -15,440 +22,153 @@ body {
   width: 100%;
   min-height: 100%;
   margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--dark-background);
 }
 
 body {
   overflow: hidden;
-  background: #1b100b;
-  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
-  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
 }
 
 [hidden] {
   display: none !important;
 }
 
-/* Closed-door opening screen */
+
+/* =========================================
+   FULL-SCREEN LAYOUT
+========================================= */
+
+.site,
+.door-screen,
+.room-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   OPENING DOOR IMAGE
+   Image filename: Door.jpg
+========================================= */
 
 .door-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background: #1b100b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #20110d;
 }
 
 .door-image {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.open-door {
+.door-shade {
   position: absolute;
-  bottom: max(34px, env(safe-area-inset-bottom));
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 13px 27px;
-  border: 1px solid #e7ca86;
-  border-radius: 32px;
-  background: rgba(48, 30, 15, 0.84);
-  color: #fff0ce;
-  font: 600 17px "Cormorant Garamond", serif;
-  letter-spacing: 1.5px;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.open-door span {
-  margin-left: 8px;
-  color: #e7c77c;
-}
-
-.door-screen.leaving {
-  animation: doorLeave 0.65s ease forwards;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(25, 12, 7, 0.02) 0%,
+      rgba(25, 12, 7, 0.05) 55%,
+      rgba(25, 12, 7, 0.55) 100%
+    );
   pointer-events: none;
 }
 
-@keyframes doorLeave {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
+.door-content {
+  position: absolute;
+  z-index: 2;
+  bottom: max(45px, 7vh);
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
 }
 
-/* Video remains the full-screen background */
+.door-caption {
+  color: #fff1d3;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px #000;
+  margin: 0 0 15px;
+}
+
+.open-button {
+  padding: 13px 25px;
+  border: 1px solid #e4c47e;
+  border-radius: 30px;
+  color: #f8e5b9;
+  background: rgba(35, 19, 12, 0.78);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.25s ease;
+}
+
+.open-button:hover {
+  background: rgba(75, 48, 28, 0.9);
+}
+
+.open-button span {
+  color: #e4c47e;
+  margin-left: 7px;
+}
+
+
+/* =========================================
+   VIDEO BACKGROUND
+   Video filename: Venue.webm
+========================================= */
 
 .room-screen {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
   isolation: isolate;
-  background: #21140c;
-}
-
-.room-video,
-.video-shade {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: #20110d;
 }
 
 .room-video {
-  z-index: -2;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
-  background: #21140c;
+  background: #20110d;
 }
 
 .video-shade {
-  z-index: -1;
-  pointer-events: none;
-  background: rgba(25, 14, 7, 0.17);
-}
-
-/* Cream and gold invitation card */
-
-.invitation {
-  position: relative;
-  z-index: 2;
-  width: min(86vw, 430px);
-  height: 86dvh;
-  max-height: 850px;
-  min-height: 390px;
-  padding: 10px;
-  overflow: hidden;
-  border: 1px solid var(--gold);
-  border-radius: 4px;
-  background:
-    radial-gradient(ellipse at top left, rgba(210, 179, 116, 0.16), transparent 42%),
-    radial-gradient(ellipse at bottom right, rgba(210, 179, 116, 0.17), transparent 42%),
-    linear-gradient(145deg, #fff9ed, #f4e7ce 58%, #fff8eb);
-  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.36);
-  animation: cardReveal 0.65s ease both;
-}
-
-@keyframes cardReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.card-inner {
   position: absolute;
-  inset: 9px;
-  overflow: hidden;
-  border: 1px solid rgba(176, 138, 67, 0.72);
-}
-
-.card-inner::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(176, 138, 67, 0.24);
-  pointer-events: none;
-}
-
-.slide {
-  position: absolute;
+  z-index: 1;
   inset: 0;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 25px 17px 43px;
-  overflow-y: auto;
-  text-align: center;
-  scrollbar-width: none;
+  background: rgba(24, 12, 7, 0.34);
+  pointer-events: none;
 }
 
-.slide::-webkit-scrollbar {
-  display: none;
-}
 
-.slide.active {
-  display: flex;
-  animation: slideEnter 0.38s ease both;
-}
-
-@keyframes slideEnter {
-  from {
-    opacity: 0;
-    transform: translateX(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.eyebrow {
-  margin: 5px 0;
-  color: var(--dark-gold);
-  font-size: clamp(10px, 2.7vw, 13px);
-  font-weight: 600;
-  letter-spacing: 1.7px;
-  line-height: 1.55;
-}
-
-.floral-mark {
-  margin: 10px 0;
-  color: var(--gold);
-  font-size: 35px;
-  line-height: 1.1;
-}
-
-.intro,
-.body-copy {
-  color: var(--ink);
-  font-size: clamp(14px, 3.8vw, 17px);
-  line-height: 1.5;
-}
-
-.script-name,
-.script-heading {
-  margin: 5px 0;
-  color: #a27a31;
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  line-height: 1.15;
-}
-
-.script-name {
-  font-size: clamp(38px, 9vw, 50px);
-}
-
-.script-heading {
-  font-size: clamp(32px, 8vw, 44px);
-}
-
-.wed {
-  margin: 3px 0;
-  color: var(--dark-gold);
-  font-size: 13px;
-  letter-spacing: 4px;
-}
-
-.gold-rule {
-  width: 78%;
-  height: 1px;
-  margin: 12px auto;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-}
-
-.gold-rule.short {
-  width: 50%;
-  margin: 9px auto;
-}
-
-.small-italic {
-  margin: 0;
-  color: #876a3d;
-  font-size: 15px;
-  font-style: italic;
-}
-
-.family-name {
-  margin: 4px 0;
-  color: var(--ink);
-  font-size: clamp(18px, 4.5vw, 23px);
-  font-weight: 600;
-}
-
-.day-label {
-  margin: 8px 0 0;
-  color: var(--dark-gold);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 3px;
-}
-
-.event-date {
-  margin: 6px 0;
-  color: var(--ink);
-  font-size: clamp(20px, 5.4vw, 27px);
-  font-weight: 600;
-}
-
-.event-time {
-  margin: 3px 0 12px;
-  color: var(--dark-gold);
-  font-size: 16px;
-  letter-spacing: 1.8px;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin: 9px 0 14px;
-}
-
-.countdown div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: clamp(47px, 14vw, 60px);
-  height: 62px;
-  border: 1px solid #c6a765;
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.36);
-}
-
-.countdown strong {
-  color: #795923;
-  font-size: 22px;
-}
-
-.countdown span {
-  color: #886d3e;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.gold-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  max-width: 100%;
-  margin: 12px auto 5px;
-  padding: 11px 17px;
-  border: 1px solid var(--gold);
-  border-radius: 30px;
-  background: linear-gradient(135deg, #fff9ed, #ead5a8);
-  color: #60461f;
-  font: 600 16px "Cormorant Garamond", serif;
-  cursor: pointer;
-}
-
-.gold-button:active {
-  transform: scale(0.98);
-}
-
-.address {
-  margin: 12px 0;
-  color: var(--ink);
-  font-size: clamp(15px, 3.8vw, 19px);
-  line-height: 1.6;
-}
-
-.closing {
-  margin: 15px 0;
-  font-size: clamp(29px, 7vw, 38px);
-}
-
-.bottom-note {
-  margin-top: 12px;
-  font-size: 9px;
-}
-
-.swipe-hint {
-  margin: 13px 0 0;
-  color: #8a7048;
-  font-size: 12px;
-  letter-spacing: 0.7px;
-}
-
-.swipe-hint span {
-  font-size: 18px;
-}
-
-.slide-controls {
-  position: absolute;
-  z-index: 5;
-  right: 0;
-  bottom: 7px;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 23px;
-  color: var(--dark-gold);
-}
-
-.slide-controls button {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 30px;
-  border: 1px solid rgba(176, 138, 67, 0.65);
-  border-radius: 20px;
-  background: rgba(255, 250, 240, 0.92);
-  color: #795923;
-  font-size: 23px;
-  cursor: pointer;
-}
-
-#slideCounter {
-  min-width: 32px;
-  font-size: 13px;
-}
-
-.video-error {
-  position: fixed;
-  z-index: 20;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 13px;
-  border-radius: 5px;
-  background: #fff5e2;
-  color: #583a20;
-  text-align: center;
-}
-
-/* Small phone screens */
-
-@media (max-height: 650px) {
-  .invitation {
-    height: 88dvh;
-    min-height: 350px;
-  }
-
-  .slide {
-    padding: 15px 12px 40px;
-  }
-
-  .floral-mark {
-    margin: 5px 0;
-    font-size: 27px;
-  }
-
-  .script-name {
-    font-size: clamp(32px, 7vw, 42px);
-  }
-
-  .gold-rule {
-    margin: 7px auto;
-  }
-
-  .countdown div {
-    height: 53px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-  }
-}
+/* =========================================
+   INVIT
