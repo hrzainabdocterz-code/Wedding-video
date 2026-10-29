@@ -1,222 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hamid &amp; Saniya | Wedding Invitation</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --dark: #25291f;
-  --olive: #656b4b;
-  --gold: #c6aa75;
-  --cream: #f4efdf;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--dark);
-  color: var(--cream);
-  font-family: 'DM Sans', sans-serif;
-}
-.cover {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 30px 18px;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(ellipse, #596047, #34392b 52%, #20241d);
-}
-.arch {
-  position: absolute;
-  width: min(80vw, 480px);
-  height: min(112vw, 620px);
-  border: 1px solid var(--gold);
-  border-bottom: 0;
-  border-radius: 50% 50% 0 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -47%);
-}
-.arch.inner {
-  width: min(70vw, 420px);
-  height: min(100vw, 560px);
-  opacity: .4;
-}
-.content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 540px;
-  animation: appear 1.3s ease both;
-}
-.small {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  line-height: 2;
-  color: #e1d0a6;
-}
-h1 {
-  font: 400 clamp(58px, 13vw, 94px)/.88 'Cormorant Garamond', serif;
-  margin: 28px 0;
-}
-.amp {
-  display: block;
-  font-size: .65em;
-  font-style: italic;
-  color: var(--gold);
-  margin: 12px;
-}
-.line {
-  width: 85px;
-  height: 1px;
-  background: var(--gold);
-  margin: 25px auto;
-}
-.subtitle {
-  font: 500 27px 'Cormorant Garamond', serif;
-  letter-spacing: 2px;
-}
-p { font-size: 14px; line-height: 1.9; }
-.button {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 14px 22px;
-  border: 1px solid var(--gold);
-  color: var(--cream);
-  text-decoration: none;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.button:hover { background: var(--gold); color: var(--dark); }
-.section {
-  padding: 78px 22px;
-  text-align: center;
-}
-.light { background: var(--cream); color: var(--dark); }
-.olive { background: var(--olive); }
-.inner-content { max-width: 650px; margin: auto; }
-.label {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 10px;
-}
-.light .label { color: var(--olive); }
-h2 {
-  font: 500 clamp(42px, 8vw, 60px)/1.05 'Cormorant Garamond', serif;
-  margin: 20px 0;
-}
-.ornament { color: var(--gold); font-size: 28px; margin: 24px; }
-.card {
-  border: 1px solid var(--gold);
-  padding: 30px 18px;
-  margin: 28px auto 0;
-  max-width: 430px;
-}
-.card h3 { font: 500 32px 'Cormorant Garamond', serif; }
-.action {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 13px 18px;
-  background: var(--gold);
-  color: var(--dark);
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-footer {
-  padding: 28px 15px;
-  text-align: center;
-  color: #d6c6a3;
-  font: italic 22px 'Cormorant Garamond', serif;
-}
-@keyframes appear {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7efdf">
+  <title>Hamid Khan & Saniya Khan — Walima Invitation</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<main>
-  <section class="cover" id="home">
-    <div class="arch"></div>
-    <div class="arch inner"></div>
-    <div class="content">
-      <div class="ornament">✳</div>
-      <div class="small">With the blessings of our families</div>
-      <h1>Hamid<span class="amp">&amp;</span>Saniya</h1>
-      <div class="line"></div>
-      <div class="subtitle">Walima Invitation</div>
-      <p>Together with our families,<br>we invite you to share in our happiness.</p>
-      <div class="small">A celebration of love &amp; togetherness</div>
-      <a class="button" href="#invitation">Open Invitation ↓</a>
-    </div>
+  <!-- SCREEN 1: CLOSED DOOR -->
+  <section id="doorScreen" class="door-screen">
+    <img
+      class="door-image"
+      src="assets/images/door-closed.jpeg"
+      alt="Wedding entrance"
+    >
+
+    <button id="openDoor" class="open-door" type="button">
+      Tap to Open <span>✦</span>
+    </button>
   </section>
 
-  <section class="section light" id="invitation">
-    <div class="inner-content">
-      <div class="label">A special invitation</div>
-      <h2>With joy in our hearts</h2>
-      <div class="ornament">❧</div>
-      <p>Our families would be honoured by your presence as we celebrate the Walima of Hamid Khan and Saniya Khan.</p>
-      <p>Your presence, prayers and blessings will make this occasion even more meaningful.</p>
-      <div class="ornament">✧</div>
-      <h2 style="font-size:38px">Hamid &amp; Saniya</h2>
-    </div>
-  </section>
+  <!-- SCREEN 2: VIDEO BACKGROUND + INVITATION -->
+  <main id="roomScreen" class="room-screen" hidden>
+    <video
+      id="roomVideo"
+      class="room-video"
+      playsinline
+      muted
+      preload="auto"
+      aria-label="Wedding room entrance animation"
+    >
+      <source src="assets/videos/room-entrance.webm" type="video/webm">
+    </video>
 
-  <section class="section" id="celebration">
-    <div class="inner-content">
-      <div class="label">Save the occasion</div>
-      <h2>The Walima</h2>
-      <div class="line"></div>
-      <p>We look forward to celebrating this beautiful occasion with our loved ones.</p>
-      <div class="card">
-        <div class="label">Date &amp; time</div>
-        <h3>Date to be confirmed</h3>
-        <p>We will add the confirmed event date and time here.</p>
+    <div class="video-shade"></div>
+
+    <!-- This card appears after the video ends.
+         The video remains on its final frame behind it. -->
+    <article id="invitation" class="invitation" hidden>
+      <div class="card-inner">
+
+        <!-- SLIDE 1 -->
+        <section class="slide active" data-slide="0">
+          <p class="eyebrow">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+          <div class="floral-mark">❦</div>
+
+          <p class="intro">With the blessings of Almighty Allah</p>
+
+          <h1 class="script-name">Hamid Khan</h1>
+          <p class="wed">W E D S</p>
+          <h1 class="script-name">Saniya Khan</h1>
+
+          <div class="gold-rule"></div>
+
+          <h2 class="script-heading">Walima Invitation</h2>
+          <p class="body-copy">
+            Together with our families, we invite you to join us
+            for this special celebration.
+          </p>
+
+          <p class="swipe-hint">Swipe left to continue <span>→</span></p>
+        </section>
+
+        <!-- SLIDE 2 -->
+        <section class="slide" data-slide="1">
+          <p class="eyebrow">WITH THE BLESSINGS OF</p>
+          <div class="floral-mark">❦</div>
+
+          <h2 class="script-heading">Hamid Khan</h2>
+          <p class="small-italic">Son of</p>
+          <p class="family-name">Mohammed Abid Khan</p>
+
+          <div class="gold-rule short"></div>
+
+          <h2 class="script-heading">Saniya Khan</h2>
+          <p class="small-italic">Daughter of</p>
+          <p class="family-name">Israr Ahmed Khan</p>
+
+          <div class="gold-rule short"></div>
+
+          <p class="small-italic">With the blessings of</p>
+          <p class="family-name">Late Mr. &amp; Mrs. Hussain Khan</p>
+
+          <p class="swipe-hint">Swipe left to continue <span>→</span></p>
+        </section>
+
+        <!-- SLIDE 3: DATE + CALENDAR -->
+        <section class="slide" data-slide="2">
+          <p class="eyebrow">CORDIALLY INVITE YOU TO THE</p>
+          <div class="floral-mark">❦</div>
+
+          <h2 class="script-heading">Walima Ceremony</h2>
+
+          <p class="day-label">MONDAY</p>
+          <p class="event-date">28th December, 2026</p>
+          <p class="event-time">8:00 PM ONWARDS</p>
+
+          <div class="countdown" aria-label="Countdown to the ceremony">
+            <div><strong id="days">--</strong><span>DAYS</span></div>
+            <div><strong id="hours">--</strong><span>HRS</span></div>
+            <div><strong id="minutes">--</strong><span>MIN</span></div>
+            <div><strong id="seconds">--</strong><span>SEC</span></div>
+          </div>
+
+          <p class="small-italic">We look forward to celebrating with you</p>
+
+          <button id="calendarButton" class="gold-button" type="button">
+            <span aria-hidden="true">▦</span> Add to Calendar
+          </button>
+
+          <p class="swipe-hint">Swipe left to see the venue <span>→</span></p>
+        </section>
+
+        <!-- SLIDE 4: LOCATION -->
+        <section class="slide" data-slide="3">
+          <p class="eyebrow">THE CELEBRATION WILL BE HELD AT</p>
+          <div class="floral-mark">❦</div>
+
+          <h2 class="script-heading venue-name">Sona Lawns</h2>
+          <div class="gold-rule short"></div>
+
+          <p class="address">
+            Plot No. 340, Waman Tukaram Patil Marg,<br>
+            near Amar Talkies, next to Bank of Maharashtra,<br>
+            Shivneri Nagar, Chembur,<br>
+            Mumbai – 400043
+          </p>
+
+          <button id="locationButton" class="gold-button" type="button">
+            <span aria-hidden="true">⌖</span> Open Google Maps
+          </button>
+
+          <h2 class="script-heading closing">Your presence is awaited</h2>
+
+          <p class="eyebrow bottom-note">
+            WE LOOK FORWARD TO CELEBRATING WITH YOU
+          </p>
+        </section>
       </div>
-    </div>
-  </section>
 
-  <section class="section olive" id="venue">
-    <div class="inner-content">
-      <div class="label">We saved you a place</div>
-      <h2>Meet us there</h2>
-      <div class="ornament">✧</div>
-      <div class="card">
-        <div class="label">Wedding venue</div>
-        <h3>Sona Lawns</h3>
-        <p>Please confirm the complete address before sharing the invitation.</p>
-        <a class="action" href="https://www.google.com/maps/search/?api=1&query=Sona+Lawns" target="_blank" rel="noopener noreferrer">Find venue on map ↗</a>
-      </div>
-    </div>
-  </section>
+      <!-- Navigation controls -->
+      <nav class="slide-controls" aria-label="Invitation pages">
+        <button id="previousSlide" type="button" aria-label="Previous page">‹</button>
+        <span id="slideCounter" aria-live="polite">1 / 4</span>
+        <button id="nextSlide" type="button" aria-label="Next page">›</button>
+      </nav>
+    </article>
 
-  <section class="section light">
-    <div class="inner-content">
-      <div class="ornament">❧</div>
-      <div class="label">Your presence is our present</div>
-      <h2>We can't wait to see you</h2>
-      <p>Thank you for being a part of our lives. We look forward to celebrating with you.</p>
-      <div class="line"></div>
-      <a class="action" href="#home">Back to invitation ↑</a>
-    </div>
-  </section>
-</main>
-<footer>Made with love · Hamid &amp; Saniya</footer>
+    <p id="videoError" class="video-error" hidden>
+      The video could not be loaded. Please check the video filename.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
