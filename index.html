@@ -2,163 +2,292 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f7efdf">
-  <title>Hamid Khan & Saniya Khan — Walima Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#20110d">
+
+  <title>Hamid & Saniya | Walima Invitation</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- SCREEN 1: CLOSED DOOR -->
-  <section id="doorScreen" class="door-screen">
-    <img
-      class="door-image"
-      src="assets/images/Door.jpg"
-      alt="Wedding entrance"
-    >
 
-    <button id="openDoor" class="open-door" type="button">
-      Tap to Open <span>✦</span>
-    </button>
-  </section>
+  <main class="site">
 
-  <!-- SCREEN 2: VIDEO BACKGROUND + INVITATION -->
-  <main id="roomScreen" class="room-screen" hidden>
-    <video
-      id="roomVideo"
-      class="room-video"
-      playsinline
-      muted
-      preload="auto"
-      aria-label="Wedding room entrance animation"
-    >
-      <source src="assets/videos/Venue.webm" type="video/webm">
-    </video>
+    <!-- OPENING DOOR SCREEN -->
+    <!-- Door.jpg repository ke main folder mein honi chahiye -->
 
-    <div class="video-shade"></div>
+    <section class="door-screen" id="doorScreen">
 
-    <!-- This card appears after the video ends.
-         The video remains on its final frame behind it. -->
-    <article id="invitation" class="invitation" hidden>
-      <div class="card-inner">
+      <img
+        class="door-image"
+        src="./Door.jpg"
+        alt="Wedding invitation entrance"
+      >
 
-        <!-- SLIDE 1 -->
-        <section class="slide active" data-slide="0">
-          <p class="eyebrow">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-          <div class="floral-mark">❦</div>
+      <div class="door-shade"></div>
 
-          <p class="intro">With the blessings of Almighty Allah</p>
+      <div class="door-content">
+        <p class="door-caption">A Special Invitation</p>
 
-          <h1 class="script-name">Hamid Khan</h1>
-          <p class="wed">W E D S</p>
-          <h1 class="script-name">Saniya Khan</h1>
-
-          <div class="gold-rule"></div>
-
-          <h2 class="script-heading">Walima Invitation</h2>
-          <p class="body-copy">
-            Together with our families, we invite you to join us
-            for this special celebration.
-          </p>
-
-          <p class="swipe-hint">Swipe left to continue <span>→</span></p>
-        </section>
-
-        <!-- SLIDE 2 -->
-        <section class="slide" data-slide="1">
-          <p class="eyebrow">WITH THE BLESSINGS OF</p>
-          <div class="floral-mark">❦</div>
-
-          <h2 class="script-heading">Hamid Khan</h2>
-          <p class="small-italic">Son of</p>
-          <p class="family-name">Mohammed Abid Khan</p>
-
-          <div class="gold-rule short"></div>
-
-          <h2 class="script-heading">Saniya Khan</h2>
-          <p class="small-italic">Daughter of</p>
-          <p class="family-name">Israr Ahmed Khan</p>
-
-          <div class="gold-rule short"></div>
-
-          <p class="small-italic">With the blessings of</p>
-          <p class="family-name">Late Mr. &amp; Mrs. Hussain Khan</p>
-
-          <p class="swipe-hint">Swipe left to continue <span>→</span></p>
-        </section>
-
-        <!-- SLIDE 3: DATE + CALENDAR -->
-        <section class="slide" data-slide="2">
-          <p class="eyebrow">CORDIALLY INVITE YOU TO THE</p>
-          <div class="floral-mark">❦</div>
-
-          <h2 class="script-heading">Walima Ceremony</h2>
-
-          <p class="day-label">MONDAY</p>
-          <p class="event-date">28th December, 2026</p>
-          <p class="event-time">8:00 PM ONWARDS</p>
-
-          <div class="countdown" aria-label="Countdown to the ceremony">
-            <div><strong id="days">--</strong><span>DAYS</span></div>
-            <div><strong id="hours">--</strong><span>HRS</span></div>
-            <div><strong id="minutes">--</strong><span>MIN</span></div>
-            <div><strong id="seconds">--</strong><span>SEC</span></div>
-          </div>
-
-          <p class="small-italic">We look forward to celebrating with you</p>
-
-          <button id="calendarButton" class="gold-button" type="button">
-            <span aria-hidden="true">▦</span> Add to Calendar
-          </button>
-
-          <p class="swipe-hint">Swipe left to see the venue <span>→</span></p>
-        </section>
-
-        <!-- SLIDE 4: LOCATION -->
-        <section class="slide" data-slide="3">
-          <p class="eyebrow">THE CELEBRATION WILL BE HELD AT</p>
-          <div class="floral-mark">❦</div>
-
-          <h2 class="script-heading venue-name">Sona Lawns</h2>
-          <div class="gold-rule short"></div>
-
-          <p class="address">
-            Plot No. 340, Waman Tukaram Patil Marg,<br>
-            near Amar Talkies, next to Bank of Maharashtra,<br>
-            Shivneri Nagar, Chembur,<br>
-            Mumbai – 400043
-          </p>
-
-          <button id="locationButton" class="gold-button" type="button">
-            <span aria-hidden="true">⌖</span> Open Google Maps
-          </button>
-
-          <h2 class="script-heading closing">Your presence is awaited</h2>
-
-          <p class="eyebrow bottom-note">
-            WE LOOK FORWARD TO CELEBRATING WITH YOU
-          </p>
-        </section>
+        <button class="open-button" id="openButton" type="button">
+          Tap to Open <span>✦</span>
+        </button>
       </div>
 
-      <!-- Navigation controls -->
-      <nav class="slide-controls" aria-label="Invitation pages">
-        <button id="previousSlide" type="button" aria-label="Previous page">‹</button>
-        <span id="slideCounter" aria-live="polite">1 / 4</span>
-        <button id="nextSlide" type="button" aria-label="Next page">›</button>
-      </nav>
-    </article>
+    </section>
 
-    <p id="videoError" class="video-error" hidden>
-      The video could not be loaded. Please check the video filename.
-    </p>
+
+    <!-- VIDEO SCREEN -->
+    <!-- Venue.webm repository ke main folder mein honi chahiye -->
+
+    <section class="room-screen" id="roomScreen" hidden>
+
+      <video
+        class="room-video"
+        id="roomVideo"
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="./Venue.webm" type="video/webm">
+        Your browser does not support this video.
+      </video>
+
+      <div class="video-shade"></div>
+
+
+      <!-- INVITATION CARD -->
+
+      <section class="invitation" id="invitation" hidden>
+
+        <div class="card-border">
+
+          <div class="ornament">❧ ❦ ❧</div>
+
+          <p class="bismillah">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </p>
+
+          <p class="small-heading">
+            IN THE NAME OF ALLAH, THE MOST GRACIOUS,
+            THE MOST MERCIFUL
+          </p>
+
+
+          <!-- SLIDE 1 -->
+
+          <div class="slide active" data-slide="0">
+
+            <p class="eyebrow">
+              With the blessings of Almighty Allah
+            </p>
+
+            <h1>Hamid Khan</h1>
+
+            <div class="ampersand">&amp;</div>
+
+            <h1>Saniya Khan</h1>
+
+            <div class="gold-line"></div>
+
+            <p class="invitation-text">
+              Request the pleasure of your gracious presence
+              at their
+            </p>
+
+            <h2>Walima Ceremony</h2>
+
+            <p class="family-text">
+              Son of<br>
+              <strong>Mohammed Abid Khan</strong>
+            </p>
+
+            <p class="family-text">
+              Daughter of<br>
+              <strong>Israr Ahmed Khan</strong>
+            </p>
+
+          </div>
+
+
+          <!-- SLIDE 2 -->
+
+          <div class="slide" data-slide="1">
+
+            <p class="eyebrow">
+              Together with our families
+            </p>
+
+            <div class="decorative-star">✦</div>
+
+            <p class="blessing-text">
+              With the blessings of
+            </p>
+
+            <h2 class="family-heading">
+              Late Mr. &amp; Mrs.<br>
+              Hussain Khan
+            </h2>
+
+            <div class="gold-line"></div>
+
+            <h2>Walima Ceremony</h2>
+
+            <p class="invitation-text">
+              Your presence and blessings will make
+              our celebration even more special.
+            </p>
+
+          </div>
+
+
+          <!-- SLIDE 3 -->
+
+          <div class="slide" data-slide="2">
+
+            <p class="eyebrow">Please join us</p>
+
+            <h2 class="event-heading">Walima Ceremony</h2>
+
+            <div class="gold-line"></div>
+
+            <p class="weekday">MONDAY</p>
+
+            <p class="date-number">28</p>
+
+            <p class="month-year">DECEMBER 2026</p>
+
+            <p class="event-time">8:00 PM onwards</p>
+
+
+            <!-- COUNTDOWN -->
+
+            <div class="countdown">
+
+              <div class="countdown-box">
+                <span id="days">--</span>
+                <small>Days</small>
+              </div>
+
+              <div class="countdown-box">
+                <span id="hours">--</span>
+                <small>Hours</small>
+              </div>
+
+              <div class="countdown-box">
+                <span id="minutes">--</span>
+                <small>Minutes</small>
+              </div>
+
+              <div class="countdown-box">
+                <span id="seconds">--</span>
+                <small>Seconds</small>
+              </div>
+
+            </div>
+
+
+            <a href="#" class="gold-button" id="calendarButton">
+              Add to Calendar <span>✦</span>
+            </a>
+
+          </div>
+
+
+          <!-- SLIDE 4 -->
+
+          <div class="slide" data-slide="3">
+
+            <p class="eyebrow">
+              We look forward to welcoming you
+            </p>
+
+            <h2 class="event-heading">The Venue</h2>
+
+            <div class="gold-line"></div>
+
+            <h2 class="venue-name">Sona Lawns</h2>
+
+            <p class="venue-address">
+              Plot No. 340, Waman Tukaram Patil Marg,<br>
+              near Amar Talkies, next to Bank of Maharashtra,<br>
+              Shivneri Nagar, Chembur,<br>
+              Mumbai – 400043
+            </p>
+
+            <a
+              class="gold-button"
+              id="locationButton"
+              href="https://www.google.com/maps/search/?api=1&query=Sona%20Lawns%2C%20Plot%20No.%20340%2C%20Waman%20Tukaram%20Patil%20Marg%2C%20Chembur%2C%20Mumbai%20400043"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Google Maps <span>↗</span>
+            </a>
+
+            <p class="closing-text">With love and duas</p>
+
+          </div>
+
+
+          <!-- SLIDE NAVIGATION -->
+
+          <div class="slide-navigation">
+
+            <button
+              class="nav-arrow"
+              id="prevButton"
+              type="button"
+              aria-label="Previous slide"
+            >‹</button>
+
+            <div class="slide-dots">
+
+              <button class="dot active" data-go="0" aria-label="Slide 1" type="button"></button>
+
+              <button class="dot" data-go="1" aria-label="Slide 2" type="button"></button>
+
+              <button class="dot" data-go="2" aria-label="Slide 3" type="button"></button>
+
+              <button class="dot" data-go="3" aria-label="Slide 4" type="button"></button>
+
+            </div>
+
+            <button
+              class="nav-arrow"
+              id="nextButton"
+              type="button"
+              aria-label="Next slide"
+            >›</button>
+
+          </div>
+
+          <p class="swipe-hint">
+            Swipe left or right to turn the page
+          </p>
+
+          <div class="ornament bottom-ornament">❧ ❦ ❧</div>
+
+        </div>
+
+      </section>
+
+
+      <!-- REPLAY BUTTON -->
+
+      <button class="replay-button" id="replayButton" type="button" hidden>
+        Replay Entrance
+      </button>
+
+    </section>
+
   </main>
 
+
+  <!-- JAVASCRIPT FILE -->
+
   <script src="script.js"></script>
+
 </body>
 </html>
