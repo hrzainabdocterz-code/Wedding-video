@@ -1,182 +1,276 @@
-const doorScreen = document.getElementById("doorScreen");
-const videoScreen = document.getElementById("videoScreen");
-const openButton = document.getElementById("openButton");
-const video = document.getElementById("entranceVideo");
-const invitation = document.getElementById("invitation");
-const videoHint = document.getElementById("videoHint");
+document.addEventListener("DOMContentLoaded", function () {
 
-const slides = Array.from(document.querySelectorAll(".slide"));
-const dots = Array.from(document.querySelectorAll(".dot"));
-const slideCounter = document.getElementById("slideCounter");
+  const doorScreen = document.getElementById("doorScreen");
+  const roomScreen = document.getElementById("roomScreen");
+  const openButton = document.getElementById("openButton");
 
-let currentSlide = 0;
-let cardShown = false;
-let touchStartX = 0;
-let touchStartY = 0;
+  const roomVideo = document.getElementById("roomVideo");
+  const invitation = document.getElementById("invitation");
+  const replayButton = document.getElementById("replayButton");
 
-const SHOW_CARD_AT = 9;
-const EVENT_DATE = new Date("2026-12-28T20:00:00+05:30");
+  const videoMessage = document.getElementById("videoMessage");
+  const videoMessageText = document.getElementById("videoMessageText");
+  const retryVideoButton = document.getElementById("retryVideoButton");
 
-/* Door tap: start video with its original audio */
-openButton.addEventListener("click", async () => {
-  doorScreen.classList.add("hidden");
-  videoScreen.classList.remove("hidden");
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const dots = Array.from(document.querySelectorAll(".dot"));
 
-  video.muted = false;
-  video.volume = 1;
-  video.currentTime = 0;
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
+  const calendarButton = document.getElementById("calendarButton");
 
-  try {
-    await video.play();
-    videoHint.classList.add("hidden");
-  } catch (error) {
-    videoHint.textContent = "Tap to play entrance video";
-    videoHint.classList.remove("hidden");
+  const SHOW_SLIDES_AT = 9;
 
-    videoScreen.addEventListener("click", async () => {
-      try {
-        await video.play();
-        videoHint.classList.add("hidden");
-      } catch (e) {
-        videoHint.textContent = "Unable to play video. Please check video format.";
-      }
-    }, { once: true });
+  let currentSlide = 0;
+  let slidesShown = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  /* SHOW INVITATION AT 9 SECONDS */
+
+  function showInvitation() {
+    if (slidesShown) return;
+
+    slidesShown = true;
+    invitation.hidden = false;
+    showSlide(0);
   }
-});
 
-/* Show invitation at exactly 9 seconds */
-function revealInvitation() {
-  if (cardShown) return;
+  /* START VIDEO */
 
-  cardShown = true;
-  invitation.classList.remove("hidden");
-  showSlide(0);
-}
+  async function startVideo() {
+    videoMessage.hidden = true;
+    videoErrorReset();
 
-video.addEventListener("timeupdate", () => {
-  if (video.currentTime >= SHOW_CARD_AT) {
-    revealInvitation();
-  }
-});
+    roomVideo.pause();
+    roomVideo.currentTime = 0;
 
-/* Fallback in case timeupdate is delayed */
-video.addEventListener("ended", () => {
-  revealInvitation();
-});
+    // Keep original video sound enabled.
+    roomVideo.muted = false;
+    roomVideo.defaultMuted = false;
+    roomVideo.volume = 1;
 
-/* Slide navigation */
-function showSlide(index) {
-  currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+    try {
+      await roomVideo.play();
+    } catch (error) {
+      console.error("Video playback error:", error);
 
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === currentSlide);
-  });
+      videoMessageText.textContent =
+        "Please tap below to play the entrance video with its original music.";
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentSlide);
-  });
-
-  slideCounter.textContent =
-    String(currentSlide + 1).padStart(2, "0") + " / 04";
-}
-
-document.getElementById("prevButton").addEventListener("click", () => {
-  showSlide(currentSlide - 1);
-});
-
-document.getElementById("nextButton").addEventListener("click", () => {
-  showSlide(currentSlide + 1);
-});
-
-dots.forEach(dot => {
-  dot.addEventListener("click", () => {
-    showSlide(Number(dot.dataset.slide));
-  });
-});
-
-/* Swipe support for iPhone and Android */
-invitation.addEventListener("touchstart", event => {
-  touchStartX = event.changedTouches[0].screenX;
-  touchStartY = event.changedTouches[0].screenY;
-}, { passive: true });
-
-invitation.addEventListener("touchend", event => {
-  const endX = event.changedTouches[0].screenX;
-  const endY = event.changedTouches[0].screenY;
-  const diffX = endX - touchStartX;
-  const diffY = endY - touchStartY;
-
-  if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
-    if (diffX < 0) {
-      showSlide(currentSlide + 1);
-    } else {
-      showSlide(currentSlide - 1);
+      videoMessage.hidden = false;
     }
   }
-}, { passive: true });
 
-/* Live countdown */
-function updateCountdown() {
-  const now = new Date();
-  let remaining = EVENT_DATE.getTime() - now.getTime();
+  function videoErrorReset() {
+    // Reset the retry message before each playback attempt.
+    videoMessageText.textContent =
+      "Please tap below to play the entrance video with its original music.";
+  }
 
-  if (remaining < 0) remaining = 0;
+  /* DOOR TAP */
 
-  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((remaining / (1000 * 60)) % 60);
-  const seconds = Math.floor((remaining / 1000) % 60);
+  openButton.addEventListener("click", function () {
+    doorScreen.hidden = true;
+    roomScreen.hidden = false;
 
-  document.getElementById("days").textContent = String(days).padStart(2, "0");
-  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-}
+    invitation.hidden = true;
+    replayButton.hidden = true;
+    slidesShown = false;
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-/* Calendar event */
-document.getElementById("calendarButton").addEventListener("click", () => {
-  const icsContent = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Wedding Invitation//EN",
-    "CALSCALE:GREGORIAN",
-    "BEGIN:VEVENT",
-    "UID:hamid-saniya-walima-20261228",
-    "DTSTAMP:20261030T000000Z",
-    "DTSTART:20261228T143000Z",
-    "DTEND:20261228T173000Z",
-    "SUMMARY:Hamid Khan & Saniya Khan - Walima Ceremony",
-    "LOCATION:SONA LAWNS, Chembur, Mumbai",
-    "DESCRIPTION:Walima Ceremony of Hamid Khan and Saniya Khan.",
-    "END:VEVENT",
-    "END:VCALENDAR"
-  ].join("\r\n");
-
-  const blob = new Blob([icsContent], {
-    type: "text/calendar;charset=utf-8"
+    startVideo();
   });
 
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "Hamid-Saniya-Walima.ics";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  /* RETRY VIDEO IF BROWSER BLOCKS PLAYBACK */
 
-  setTimeout(() => URL.revokeObjectURL(url), 3000);
-});
+  retryVideoButton.addEventListener("click", function () {
+    startVideo();
+  });
 
-/* Google Maps location */
-document.getElementById("locationButton").addEventListener("click", () => {
-  const address = "SONA LAWNS, Plot No. 340, Waman Tukaram Patil Marg, near Amar Talkies, next to Bank of Maharashtra, Shivneri Nagar, Chembur, Mumbai 400043";
+  /* SHOW SLIDES WHEN VIDEO REACHES 9 SECONDS */
 
-  const mapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent(address);
+  roomVideo.addEventListener("timeupdate", function () {
+    if (roomVideo.currentTime >= SHOW_SLIDES_AT) {
+      showInvitation();
+    }
+  });
 
-  window.open(mapsUrl, "_blank", "noopener");
+  /* WHEN VIDEO ENDS, KEEP ITS LAST FRAME */
+
+  roomVideo.addEventListener("ended", function () {
+    showInvitation();
+
+    // Do not hide or reset the video.
+    // Its final frame remains as the background.
+    replayButton.hidden = false;
+  });
+
+  /* VIDEO LOAD/DECODE ERROR */
+
+  roomVideo.addEventListener("error", function () {
+    console.error("Could not load venue.mp4");
+
+    videoMessageText.textContent =
+      "The entrance video could not load. Please check that venue.mp4 is uploaded in the repository root.";
+
+    videoMessage.hidden = false;
+  });
+
+  /* REPLAY ENTRANCE */
+
+  replayButton.addEventListener("click", function () {
+    invitation.hidden = true;
+    replayButton.hidden = true;
+    slidesShown = false;
+
+    startVideo();
+  });
+
+  /* FOUR SLIDES */
+
+  function showSlide(index) {
+    currentSlide = (index + slides.length) % slides.length;
+
+    slides.forEach(function (slide, i) {
+      slide.classList.toggle("active", i === currentSlide);
+      slide.setAttribute(
+        "aria-hidden",
+        i === currentSlide ? "false" : "true"
+      );
+    });
+
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle("active", i === currentSlide);
+      dot.setAttribute(
+        "aria-current",
+        i === currentSlide ? "true" : "false"
+      );
+    });
+  }
+
+  prevButton.addEventListener("click", function () {
+    showSlide(currentSlide - 1);
+  });
+
+  nextButton.addEventListener("click", function () {
+    showSlide(currentSlide + 1);
+  });
+
+  dots.forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      showSlide(Number(dot.dataset.go));
+    });
+  });
+
+  /* SWIPE LEFT / RIGHT ON MOBILE */
+
+  invitation.addEventListener("touchstart", function (event) {
+    if (!event.changedTouches.length) return;
+
+    touchStartX = event.changedTouches[0].clientX;
+    touchStartY = event.changedTouches[0].clientY;
+  }, { passive: true });
+
+  invitation.addEventListener("touchend", function (event) {
+    if (!event.changedTouches.length) return;
+
+    const endX = event.changedTouches[0].clientX;
+    const endY = event.changedTouches[0].clientY;
+
+    const differenceX = endX - touchStartX;
+    const differenceY = endY - touchStartY;
+
+    if (
+      Math.abs(differenceX) > 45 &&
+      Math.abs(differenceX) > Math.abs(differenceY) * 1.2
+    ) {
+      if (differenceX < 0) {
+        showSlide(currentSlide + 1);
+      } else {
+        showSlide(currentSlide - 1);
+      }
+    }
+  }, { passive: true });
+
+  /* COUNTDOWN TO 28 DECEMBER 2026, 8 PM IST */
+
+  const eventDate = new Date("2026-12-28T20:00:00+05:30");
+
+  function updateCountdown() {
+    let remaining = eventDate.getTime() - Date.now();
+
+    if (remaining <= 0) {
+      document.getElementById("days").textContent = "0";
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = "00";
+      document.getElementById("seconds").textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(remaining / 86400000);
+    const hours = Math.floor((remaining % 86400000) / 3600000);
+    const minutes = Math.floor((remaining % 3600000) / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
+
+    document.getElementById("days").textContent =
+      String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+      String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+      String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+      String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ADD TO CALENDAR */
+
+  calendarButton.addEventListener("click", function () {
+
+    const eventLines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Hamid and Saniya//Walima Invitation//EN",
+      "CALSCALE:GREGORIAN",
+      "BEGIN:VEVENT",
+      "UID:hamid-saniya-walima-20261228@example.com",
+      "DTSTAMP:20261030T000000Z",
+      "DTSTART;TZID=Asia/Kolkata:20261228T200000",
+      "DTEND;TZID=Asia/Kolkata:20261228T230000",
+      "SUMMARY:Walima Ceremony - Hamid Khan and Saniya Khan",
+      "LOCATION:Sona Lawns, Chembur, Mumbai 400043",
+      "DESCRIPTION:Walima Ceremony of Hamid Khan and Saniya Khan. Monday 28 December 2026 at 8 PM onwards.",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ];
+
+    const calendarFile = new Blob(
+      [eventLines.join("\r\n")],
+      { type: "text/calendar;charset=utf-8" }
+    );
+
+    const fileURL = URL.createObjectURL(calendarFile);
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = fileURL;
+    downloadLink.download = "Hamid-Saniya-Walima.ics";
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+
+    setTimeout(function () {
+      URL.revokeObjectURL(fileURL);
+    }, 3000);
+  });
+
+  /* INITIAL SLIDE STATE */
+
+  showSlide(0);
+
 });
