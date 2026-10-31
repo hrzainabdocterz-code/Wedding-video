@@ -424,13 +424,16 @@ button {
   width: 100%;
   min-height: 30px;
   color: #8d642c;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
   white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-kerning: none;
+  letter-spacing: 0;
 }
 
 .countdown-box span {
