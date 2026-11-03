@@ -385,7 +385,13 @@ button {
 .event-date {
   margin: 3px 0;
   color: #563e2b;
-  font-size: clamp(22px, 6vw, 28px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-kerning: none;
 }
 
 .event-time {
@@ -424,16 +430,13 @@ button {
   width: 100%;
   min-height: 30px;
   color: #8d642c;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
   white-space: nowrap;
-  font-variant-numeric: lining-nums tabular-nums;
-  font-feature-settings: "lnum" 1, "tnum" 1;
-  font-kerning: none;
-  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
 .countdown-box span {
