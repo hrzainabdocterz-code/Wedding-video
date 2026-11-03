@@ -382,6 +382,8 @@ button {
   letter-spacing: 4px;
 }
 
+/* DATE FONT - SAME AS COUNTDOWN */
+
 .event-date {
   margin: 3px 0;
   color: #563e2b;
@@ -392,6 +394,7 @@ button {
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-kerning: none;
+  letter-spacing: 0;
 }
 
 .event-time {
@@ -425,18 +428,23 @@ button {
   background: rgba(255, 255, 255, .45);
 }
 
+/* TIMER FONT - SAME AS DATE */
+
 .countdown-box strong {
   display: block;
   width: 100%;
   min-height: 30px;
   color: #8d642c;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
   white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-kerning: none;
+  letter-spacing: 0;
 }
 
 .countdown-box span {
